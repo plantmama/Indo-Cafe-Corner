@@ -4,24 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #94722e; /* Light background color for the page */
+            background-color: #94722e;
+        /* USED W2 SCHOOLS AND COURSERA FOR SCROLLBAR FUNCTIONS */    
+            overflow-x: hidden; /* Hides horizontal scrollbar */
+            overflow-y: auto; /* Allows vertical scrolling */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
         }
+        /* END OF THEIR CODE */
+
         header {
             background-color: rgba(0, 0, 0, 0.7); 
             padding: 20px;
             border-radius: 8px;
             width: auto;
             max-width: 800px;
-            margin: 20px auto; /* Centering header */
+            margin: 20px auto; /* CENTER THE HEADER */
             color: white;
             display: flex;
-            justify-content: space-between; /* Align title and navigation side by side */
+            justify-content: space-between; /* ALIGNS TITLE AND NAV */
             align-items: center;
             flex-wrap: wrap;
         }
@@ -32,7 +40,7 @@
             font-weight: bold;
         }
         header a.nav_link h1 {
-            display: inline; /* Keep h1 in the same line */
+            display: inline; /* KEEPS h1 IN SAME MARGIN */
             margin: 0;
         }
         nav ul {
@@ -41,7 +49,7 @@
             padding: 0;
             display: flex;
             flex-wrap: wrap;
-            gap: 10px; /* Spacing between navigation links */
+            gap: 10px; /* SPACE BETWEEN NAV LINKS */
         }
         nav a.nav-link {
             color: white; 
@@ -52,17 +60,124 @@
             display: block;
         }
         nav a.nav-link:hover {
-            color: #d9eaff; /* Light hover color */
+            color: #d9eaff; 
         }
-        .container {
+
+        .cardboard {
             background-color: rgba(0, 0, 0, 0.7); 
             padding: 20px;
             border-radius: 8px;
             width: auto;
             max-width: 800px;
-            margin: 20px auto; /* Centering container */
-            text-align: center; /* Center text and image */
+            margin: 20px auto; /* CENTER CARDBOARD */
+            text-align: center;
         }
+        .rectangle {
+            width: 100vw; 
+            height: 80vh; 
+            background-color: rgb(101, 2, 2); 
+            position: relative;
+            margin-top: 0.5in;
+            border-radius: 8px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex; 
+            justify-content: center;
+            align-items: center; 
+            overflow: hidden; 
+            flex-direction: column; 
+            gap: 20px;
+        }
+
+        .gallery {
+            display: flex;
+            overflow: hidden;
+            gap: 10px;
+            width: 100%; 
+            height: 100%; 
+        }
+    
+        .gallery img {
+            width: 100%; 
+            height: auto; 
+            object-fit: cover; 
+            border-radius: 8px;
+        }
+        .thumbnails {
+            display: flex;
+            justify-content: center; /* HORIZONTAL THUMBNAILS */
+            gap: 10px;
+        }
+
+        .thumbnails img {
+            width: 100px;
+            height: auto;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 8px;
+        }
+
+        .thumbnails img.active {
+            border-color: #94722e;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.7);
+            min-width: 160px;
+            z-index: 1;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .dropdown-content li a {
+            padding: 10px 20px;
+            display: block;
+            color: white;
+        }
+
+        .dropdown-content li a:hover {
+            background-color: #d9eaff; 
+            color: black;
+        }
+
+        .squaresContainer {
+            display: flex;
+            justify-content: space-between; 
+            margin: 20px auto; 
+            width: 90%; 
+        }
+
+        .squareBox {
+            flex: 1; 
+            margin: 0 10px; 
+            height: 350px; 
+            background-color: #d9eaff; 
+            border-radius: 8px; 
+            overflow: hidden;
+        }
+
+        .squareBox {
+            flex: 1; 
+            margin: 0 10px;
+            height: 200px;
+            background-color: #d9eaff
+            border-radius: 8px; 
+            overflow: hidden; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; /
+        }
+
+        .squareBox img {
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover;
+            display: block;
+        }
+
+
     </style>
 </head>
 <body>
@@ -70,28 +185,88 @@
         <a class="nav_link" href="#"><h1>Indonesian Cafe Corner!</h1></a>
         <nav>
             <ul class="nav-menu">
-                <li><a class="nav-link" href="gallery.html">Home</a></li>
-                <li><a class="nav-link" href="about.html">About</a></li>
-                <li><a class="nav-link" href="contact.html">Contact</a></li>
-                <li><a class="nav-link" href="faq.html">FAQ</a></li>
+                <li><a class="nav-link" href="home.html">HOME</a></li>
+                <li><a class="nav-link" href="about.html">ABOUT OUR CHEFS</a></li>
+                <li><a class="nav-link" href="contact.html">CONTACT US</a></li>
+                <li><a class="nav-link" href="specials.html">SPECIALS</a></li>
                 <li class="dropdown">
-                    <a class="nav-link" href="#">Product</a>
-             <!--  <ul class="dropdown-content">
+                    <a class="nav-link" href="#">POPULAR</a>
+                    <ul class="dropdown-content">
                         <li><a href="assets/">Rengdang</a></li>
                         <li><a href="assets/">Mi Goreng</a></li>
                     </ul>     
                 </li>
                 <li class="dropdown">
-                    <a class="nav-link" href="#">Service</a>
+                    <a class="nav-link" href="#">SERVICES</a>
                     <ul class="dropdown-content">
                         <li><a href="service1.html">Catering</a></li>
                         <li><a href="service2.html">Personal Chefs</a></li>
                     </ul>
-                </li>-->  
+                </li>
             </ul>
         </nav>
     </header>
+    <div class="rectangle">
+        <div class="cardboard gallery">
+            <img id="img1" src="assets/porridge.png" alt="porridge" class="active">
+            <img id="img2" src="assets/rendang.png" alt="rendang">
+            <img id="img3" src="assets/cendol.png" alt="cendol">
+            <img id="img4" src="assets/nasiPedang.png" alt="nasiPedang">
+            <img id="img5" src="assets/nasiLewit.png" alt="nasiLewit">
+            <img id="img6" src="assets/migoreng.png" alt="migoreng">
+            <img id="img7" src="assets/martabakManis.png" alt="martabakManis">
+        </div>
 
+        <div class="cardboard thumbnails">
+            <img src="assets/porridge.png" alt="porridge 1" data-id="img1" class="active">
+            <img src="assets/rendang.png" alt="rendang" data-id="img2">
+            <img src="assets/cendol.png" alt="cendol" data-id="img3">
+            <img src="assets/nasiPedang.png" alt="nasiPedang" data-id="img4">
+            <img src="assets/nasiLewit.png" alt="nasiLewit" data-id="img5">
+            <img src="assets/migoreng.png" alt="migoreng" data-id="img6">
+            <img src="assets/martabakManis.png" alt="martabakManis" data-id="img7">
+        </div>
+    </div>
+
+    <div>
+        <h2> Drool Worthy Desserts! </h2>
+    </div>
+
+    <div class="squaresContainer">
+        <div class="squareBox">
+            <img src="assets/esBuah.png" alt="Shaved Ice with Fruit">
+        </div>
+        <div class="squareBox">
+            <img src="assets/cendol.png" alt="Cendol">
+        </div>
+        <div class="squareBox">
+            <img src="assets/martabakManis.png" alt="martabakManis  ">
+        </div>
+    </div>
     
+    
+<script>
+    $(document).ready(function(){
+        $('.dropdown').hover(
+            function() {
+                $(this).children('.dropdown-content').stop(true, true).slideDown(200);
+            },
+            function() {
+                $(this).children('.dropdown-content').stop(true, true).slideUp(200);
+            }
+        );
+    
+        $('.thumbnails img').on('click', function(){
+        
+            $('.thumbnails img').removeClass('active');
+            $(this).addClass('active');
+            $('.gallery img').hide();
+            $('#' + $(this).data('id')).fadeIn();
+        });
+
+        $('.gallery img:first').show();
+    });
+</script>
+
 </body>
 </html>
