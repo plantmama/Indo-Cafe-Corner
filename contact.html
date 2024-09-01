@@ -187,7 +187,7 @@
             margin-top: 15px;
             padding: 10px;
             border-radius: 4px;
-            display: none;
+            display: none; /* Hidden by default */
         }
         
         .message-area.success {
@@ -265,7 +265,8 @@
         </form>
         <div id="messageArea" class="message-area"></div>
     </div>
-    <!-- FORM-->
+    
+    <!--FORM-->
     <script>
         document.getElementById('contactForm').addEventListener('submit', function(event) {
             event.preventDefault(); 
